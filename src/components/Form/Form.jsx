@@ -6,11 +6,7 @@ export const Form = () => {
   const [country, setCountry] = useState('')
   const [street, setStreet] = useState('')
   const [subject, setSubject] = useState('physical')
-  const tg = useTelegram()
-
-  const onChangeCountry = (e) => {
-    setCountry(e.target.value)
-  }
+  const { tg } = useTelegram()
 
   useEffect(() => {
     tg.MainButton.setParams({
@@ -25,6 +21,10 @@ export const Form = () => {
       tg.MainButton.show()
     }
   }, [country, street])
+
+  const onChangeCountry = (e) => {
+    setCountry(e.target.value)
+  }
 
   const onChangeStreet = (e) => {
     setStreet(e.target.value)
